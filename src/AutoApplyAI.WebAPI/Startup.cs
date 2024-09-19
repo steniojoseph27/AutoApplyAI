@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using AutoApplyAI.Application.Interfaces;
+using AutoApplyAI.Application.Services;
 
 namespace AutoApplyAI.WebAPI
 {
@@ -19,6 +21,8 @@ namespace AutoApplyAI.WebAPI
         {
             services.AddControllers();
 
+            services.AddTransient<IEmailResponderService, EmailResponderService>();
+
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
         }
@@ -29,7 +33,7 @@ namespace AutoApplyAI.WebAPI
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CurriculumBuilderService.API v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AutoApplyAI.WebAPI v1"));
             }
             else
             {

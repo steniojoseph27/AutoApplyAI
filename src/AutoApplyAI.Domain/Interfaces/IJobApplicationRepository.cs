@@ -4,7 +4,7 @@ namespace AutoApplyAI.Domain.Interfaces
 { 
     public interface IJobApplicationRepository 
     { 
-        void Add(JobApplication jobApplication); 
-        JobApplication GetById(int id); 
+        public void Add(JobApplication jobApplication); 
+        public JobApplication GetById(int id); 
     } 
 }
